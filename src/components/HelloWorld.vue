@@ -133,16 +133,20 @@ export default class HelloWorld extends Vue {
   })
   private clonedselectedUser!: string[];
   @Prop({
-    type: Array,
-    default: Array,
+    type: Object,
+    default: Object,
   })
-  private selectedUser!: [];
+  private selectedUser!: Object;
   @Prop({
+    type: Object,
+    default: Object,
+  })
+  private selectedAdmin!: Object;
+  @Prop({ 
     type: Array,
     default: Array,
   })
-  private selectedAdmin!: [];
-  Admins: any;
+  private Admins!: any;
   Users: any;
   message: any;
   cancelbtn() {
@@ -152,13 +156,15 @@ export default class HelloWorld extends Vue {
   }
   saveBtn() {
     // if (this.selectedUser) {
-    //   const index = this.Users.findIndex((u) => u.id === this.selectedUser.id);
+    //   const index = this.Users.findIndex(
+    //     this.Users.id === this.selectedUser.id
+    //   );
     //   this.Users.splice(index, 1, this.selectedUser);
     //   this.Users = { ...this.Users };
     //   this.selectedUser = undefined;
     // } else {
     //   const index = this.Admins.findIndex(
-    //     (ad) => ad.id === this.selectedAdmin.id
+    //     this.Admins.id === this.selectedAdmin.id
     //   );
     //   this.Admins.splice(index, 1, this.selectedAdmin);
     //   this.Admins = { ...this.Admins };
@@ -187,13 +193,13 @@ export default class HelloWorld extends Vue {
     this.Admins = await this.GetAdmin();
     this.message = "";
   }
-  selectUser(persons: any) {
+  selectUser(persons: Object) {
     this.selectedUser = persons;
   }
-  selectAdmin(adm: any) {
+  selectAdmin(adm: Object) {
     this.selectedAdmin = adm;
   }
-  created() {
+  private created(): Object {
     return this.LoadUsers();
   }
 }

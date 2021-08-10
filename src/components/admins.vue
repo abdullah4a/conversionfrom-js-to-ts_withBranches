@@ -45,7 +45,11 @@ export default class admins extends Vue {
     default: () => [],
   })
   private admin!: string[];
-
+  @Prop({
+    type: Array as PropType<string[]>,
+    default: () => [],
+  })
+  private fullNameAdmin!: string[];
   btnSave = "save";
   btnCancel = "cancel";
   message = "This is message";

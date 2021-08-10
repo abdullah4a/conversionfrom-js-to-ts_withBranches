@@ -2,7 +2,7 @@
   <div id="usercontainer">
     <div class="header">
       <h4>User</h4>
-      <p>{{ fullName | Capt }}</p>
+      <!-- <p>{{ fullName | Capt }}</p> -->
     </div>
     <div class="content">
       <div class="field">
@@ -53,24 +53,26 @@ export default class users extends Vue {
   private user!: string[];
   btnSave = "save";
   btnCancel = "cancel";
-  message = "This is message";
+  message: any;
   clonedUser = { ...this.user };
+  fullName: any;
   cancelbtn() {
     this.$emit("cancel");
   }
   saveBtn(): void {
     this.$emit("save", this.clonedUser);
   }
-  computed: Record<string, unknown> = {
-    fullName(): string {
-      return `${this.clonedUser.firstName} ${this.clonedUser.lastname}`;
-    },
-  };
-  @Watch("clonedUser.lastname", { immediate: true })
-  private watchModel(val: any, oldVal: any) {
-    if (val) {
-      console.log(val);
-    }
-  }
+
+  // private computed: Object = {
+  //   fullName: {
+  //     return `${this.clonedUser.firstName} ${this.clonedUser.lastname}`;
+  //   },
+  // };
+  // @Watch("clonedUser.lastname", { immediate: true })
+  // private watchModel(val: any, oldVal: any) {
+  //   if (val) {
+  //     console.log(val);
+  //   }
+  // }
 }
 </script>
