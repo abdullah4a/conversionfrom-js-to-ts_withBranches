@@ -193,13 +193,25 @@ export default class HelloWorld extends Vue {
     this.Admins = await this.GetAdmin();
     this.message = "";
   }
-  selectUser(persons: Object) {
-    this.selectedUser = persons;
+  settoSelectedUser(): void {
+    this.selectedUser = this.getfromselectUser;
   }
-  selectAdmin(adm: Object) {
-    this.selectedAdmin = adm;
+  getfromselectUser(): (persons: any) => any {
+    return this.selectUser;
   }
-  private created(): Object {
+  settoSelectedAdmin(): void {
+    this.selectedAdmin = this.getfromselectAdmin;
+  }
+  getfromselectAdmin(): (adm: any) => any {
+    return this.selectAdmin;
+  }
+  selectUser(persons: any): any {
+    return persons;
+  }
+  selectAdmin(adm: any): any {
+    return adm;
+  }
+  private created(): any {
     return this.LoadUsers();
   }
 }
