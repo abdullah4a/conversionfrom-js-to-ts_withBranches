@@ -41,15 +41,15 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 @Component({})
 export default class admins extends Vue {
   @Prop({
-    type: Array as PropType<string[]>,
-    default: () => [],
+    type: Object,
+    default: Object,
   })
-  private admin!: string[];
+  private admin!: any;
   @Prop({
-    type: Array as PropType<string[]>,
-    default: () => [],
+    type: Object,
+    default: Object,
   })
-  private fullNameAdmin!: string[];
+  private fullNameAdmin!: any;
   btnSave = "save";
   btnCancel = "cancel";
   message = "This is message";
@@ -62,7 +62,7 @@ export default class admins extends Vue {
   }
   computed: Record<string, any> = {
     fullNameAdmin(): string {
-      return this.clonedAdmin.afirstName + "" + this.clonedAdmin.alastname;
+      return this.clonedAdmin.afirstName + " " + this.clonedAdmin.alastname;
     },
   };
 }

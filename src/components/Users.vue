@@ -47,10 +47,10 @@ import { Component, Prop, Vue, Watch } from "vue-property-decorator";
 @Component({})
 export default class users extends Vue {
   @Prop({
-    type: Array as PropType<string[]>,
-    default: () => [],
+    type: Object,
+    default: Object,
   })
-  private user!: string[];
+  private user!: any;
   btnSave = "save";
   btnCancel = "cancel";
   message: any;

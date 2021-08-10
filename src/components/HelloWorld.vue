@@ -126,23 +126,23 @@ export default class HelloWorld extends Vue {
     type: Array as PropType<string[]>,
     default: () => [],
   })
-  private clonedselectedadmin!: string[];
+  private clonedselectedadmin!: any;
   @Prop({
     type: Array as PropType<string[]>,
     default: () => [],
   })
-  private clonedselectedUser!: string[];
+  private clonedselectedUser!: any;
   @Prop({
     type: Object,
     default: Object,
   })
-  private selectedUser!: Object;
+  private selectedUser!: any;
   @Prop({
     type: Object,
     default: Object,
   })
-  private selectedAdmin!: Object;
-  @Prop({ 
+  private selectedAdmin!: any;
+  @Prop({
     type: Array,
     default: Array,
   })
