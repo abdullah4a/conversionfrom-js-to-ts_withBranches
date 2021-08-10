@@ -40,7 +40,7 @@
       @save="saveBtn"
     />
     <div class="message">
-      <pre>{{ message }}</pre>
+      <pre>{{ clonedselectedUser }}</pre>
     </div>
   </div>
 </template>
@@ -125,7 +125,7 @@ export default class HelloWorld extends Vue {
     type: Array as PropType<string[]>,
     default: () => [],
   })
-  private clonedselectedUser!: string[];
+  private clonedselectedperson!: string[];
   @Prop({
     type: Array,
     default: Array,
@@ -138,11 +138,11 @@ export default class HelloWorld extends Vue {
   private selectedAdmin!: [];
   Users = [];
   Admins = [];
-  message = "This is message";
+  // message = "This is message";
   cancelbtn() {
     this.selectedAdmin = [];
     this.selectedUser = [];
-    this.message = "";
+    // this.message = "";
   }
   saveBtn() {
     // if (this.selectedUser) {
@@ -159,8 +159,9 @@ export default class HelloWorld extends Vue {
     //   this.selectAdmin = undefined;
     // }
     if (this.selectedUser) {
-      this.clonedselectedUser = this.selectedUser;
-      this.message = this.clonedselectedUser;
+      this.clonedselectedperson = this.selectedUser;
+    } else {
+      this.clonedselectedperson = this.selectedAdmin;
     }
   }
   async GetUsers() {
@@ -175,15 +176,17 @@ export default class HelloWorld extends Vue {
   }
   async LoadUsers() {
     this.Users = [];
-    this.message = "Please wait... Users and Admins are being Loaded";
-    this.Users.concat(await this.GetUsers());
-    this.Admins.concat(await this.GetAdmin());
-    this.message = "";
+    this.clonedselectedperson = [
+      "Please wait... Users and Admins are being Loaded",
+    ];
+    this.Users.push(this.GetUsers());
+    this.Admins.concat(this.GetAdmin());
+    this.clonedselectedperson = [];
   }
-  selectUser(persons) {
+  selectUser(persons: any): void {
     this.selectedUser = persons;
   }
-  selectAdmin(adm) {
+  selectAdmin(adm: any): void {
     this.selectedAdmin = adm;
   }
   created() {

@@ -41,8 +41,6 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 export default class admins extends Vue {
   @Prop({ type: Object, default: Object })
   private admin!: Object;
-  @Prop({ type: Object, default: Object })
-  public clonedAdmin!: Object;
 
   btnSave = "save";
   btnCancel = "cancel";
@@ -56,7 +54,7 @@ export default class admins extends Vue {
   }
   private computed: object = {
     fullNameAdmin(): string {
-      return `${this.clonedAdmin.afirstName} ${this.clonedAdmin.alastname}`;
+      // return `${this.clonedAdmin.afirstName} ${this.clonedAdmin.alastname}`;
     },
   };
 }

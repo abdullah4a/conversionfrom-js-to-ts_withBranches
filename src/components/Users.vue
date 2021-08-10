@@ -47,8 +47,6 @@ import { Component, Prop, Vue, Watch } from "vue-property-decorator";
 export default class users extends Vue {
   @Prop({ type: Object, required: false })
   private user!: Object;
-  @Prop({ type: Object, required: false })
-  public clonedUser!: Object;
   btnSave = "save";
   btnCancel = "cancel";
   message = "This is message";
