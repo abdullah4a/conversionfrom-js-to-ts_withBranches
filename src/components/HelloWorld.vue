@@ -40,7 +40,7 @@
       @save="saveBtn"
     />
     <div class="message">
-      <pre>{{ clonedselectedUser }}</pre>
+      <pre>{{ message }}</pre>
     </div>
   </div>
 </template>
@@ -112,10 +112,15 @@ const Admin = [
 ];
 import { PropType } from "vue";
 import { Component, Prop, Vue } from "vue-property-decorator";
-import { PluginObject } from "vue/types/umd";
 import admins from "./admins.vue";
 import users from "./Users.vue";
-@Component
+
+@Component({
+  components: {
+    admins,
+    users,
+  },
+})
 export default class HelloWorld extends Vue {
   @Prop({
     type: Array as PropType<string[]>,
@@ -126,7 +131,7 @@ export default class HelloWorld extends Vue {
     type: Array as PropType<string[]>,
     default: () => [],
   })
-  private clonedselectedperson!: string[];
+  private clonedselectedUser!: string[];
   @Prop({
     type: Array,
     default: Array,
@@ -139,11 +144,11 @@ export default class HelloWorld extends Vue {
   private selectedAdmin!: [];
   Admins: any;
   Users: any;
-  // message = "This is message";
+  message: any;
   cancelbtn() {
     this.selectedAdmin = [];
     this.selectedUser = [];
-    // this.message = "";
+    this.message = "";
   }
   saveBtn() {
     // if (this.selectedUser) {
@@ -160,29 +165,27 @@ export default class HelloWorld extends Vue {
     //   this.selectAdmin = undefined;
     // }
     if (this.selectedUser) {
-      this.clonedselectedperson = this.selectedUser;
+      this.message = this.selectedUser;
     } else {
-      this.clonedselectedperson = this.selectedAdmin;
+      this.message = this.selectedAdmin;
     }
   }
-  async GetUsers(): Promise<Object> {
+  async GetUsers(): Promise<Array<unknown>> {
     return new Promise((resolve) => {
       setTimeout(() => resolve(User), 1500);
     });
   }
-  async GetAdmin(): Promise<Object> {
+  async GetAdmin(): Promise<Array<unknown>> {
     return new Promise((resolve) => {
       setTimeout(() => resolve(Admin), 1500);
     });
   }
   async LoadUsers() {
     this.Users = [];
-    this.clonedselectedperson = [
-      "Please wait... Users and Admins are being Loaded",
-    ];
+    this.message = "Please wait... Users and Admins are being Loaded";
     this.Users = await this.GetUsers();
     this.Admins = await this.GetAdmin();
-    this.clonedselectedperson = [];
+    this.message = "";
   }
   selectUser(persons: any) {
     this.selectedUser = persons;
@@ -191,7 +194,7 @@ export default class HelloWorld extends Vue {
     this.selectedAdmin = adm;
   }
   created() {
-    this.LoadUsers();
+    return this.LoadUsers();
   }
 }
 </script>

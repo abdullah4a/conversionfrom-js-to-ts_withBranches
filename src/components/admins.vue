@@ -6,16 +6,16 @@
     </div>
     <div class="content">
       <div class="field">
-        <label for="id"> Admin ID </label><br />
-        <input type="text" id="id" v-model="clonedAdmin.aid" readonly />
+        <label for="adminid"> Admin ID </label><br />
+        <input type="text" id="adminid" v-model="clonedAdmin.aid" readonly />
       </div>
       <div class="field">
-        <label for="firstname"> First Name</label><br />
+        <label for="adminfirstname"> First Name</label><br />
         <input type="text" id="firstname" v-model="clonedAdmin.afirstName" />
       </div>
       <div class="field">
-        <label for="lastame"> Last Name</label><br />
-        <input type="text" id="lastname" v-model="clonedAdmin.alastname" />
+        <label for="adminlastame"> Last Name</label><br />
+        <input type="text" id="adminlastname" v-model="clonedAdmin.alastname" />
       </div>
       <div class="field">
         <label for="aage"> Admin Age </label><br />
@@ -36,11 +36,15 @@
 </template>
 
 <script lang="ts">
+import { PropType } from "vue";
 import { Component, Prop, Vue } from "vue-property-decorator";
 @Component({})
 export default class admins extends Vue {
-  @Prop({ type: Object, default: Object })
-  private admin!: Object;
+  @Prop({
+    type: Array as PropType<string[]>,
+    default: () => [],
+  })
+  private admin!: string[];
 
   btnSave = "save";
   btnCancel = "cancel";
@@ -52,10 +56,9 @@ export default class admins extends Vue {
   saveBtn(): void {
     this.$emit("save", this.clonedAdmin);
   }
-  private computed: object = {
+  computed: Record<string, any> = {
     fullNameAdmin(): string {
-      return "working";
-      // return `${this.clonedAdmin.afirstName} ${this.clonedAdmin.alastname}`;
+      return this.clonedAdmin.afirstName + "" + this.clonedAdmin.alastname;
     },
   };
 }

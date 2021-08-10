@@ -6,24 +6,24 @@
     </div>
     <div class="content">
       <div class="field">
-        <label for="id"> User ID </label><br />
-        <input type="text" id="id" v-model="clonedUser.id" readonly />
+        <label for="Userid"> User ID </label><br />
+        <input type="text" id="Userid" v-model="clonedUser.id" readonly />
       </div>
       <div class="field">
-        <label for="firstname"> First Name</label><br />
-        <input type="text" id="firstname" v-model="clonedUser.firstName" />
+        <label for="Userfirstname"> First Name</label><br />
+        <input type="text" id="Userfirstname" v-model="clonedUser.firstName" />
       </div>
       <div class="field">
-        <label for="lastame"> Last Name</label><br />
-        <input type="text" id="lastname" v-model="clonedUser.lastname" />
+        <label for="Userlastname"> Last Name</label><br />
+        <input type="text" id="Userlastname" v-model="clonedUser.lastname" />
       </div>
       <div class="field">
-        <label for="age"> User Age </label><br />
-        <input type="text" id="age" v-model="clonedUser.age" />
+        <label for="Userage"> User Age </label><br />
+        <input type="text" id="Userage" v-model="clonedUser.age" />
       </div>
       <div class="field">
-        <label for="Uage"> User Salary </label><br />
-        <input type="text" id="Uage" v-model="clonedUser.Salary" /><br />${{
+        <label for="USalary"> User Salary </label><br />
+        <input type="text" id="USalary" v-model="clonedUser.Salary" /><br />${{
           user.Salary | Dollars
         }}
       </div>
@@ -42,12 +42,15 @@
 </template>
 
 <script lang="ts">
+import { PropType } from "vue";
 import { Component, Prop, Vue, Watch } from "vue-property-decorator";
 @Component({})
 export default class users extends Vue {
-  @Prop({ type: Object, required: false })
-  private user!: Object;
-
+  @Prop({
+    type: Array as PropType<string[]>,
+    default: () => [],
+  })
+  private user!: string[];
   btnSave = "save";
   btnCancel = "cancel";
   message = "This is message";
@@ -58,7 +61,7 @@ export default class users extends Vue {
   saveBtn(): void {
     this.$emit("save", this.clonedUser);
   }
-  private computed: Object = {
+  computed: Record<string, unknown> = {
     fullName(): string {
       return `${this.clonedUser.firstName} ${this.clonedUser.lastname}`;
     },
