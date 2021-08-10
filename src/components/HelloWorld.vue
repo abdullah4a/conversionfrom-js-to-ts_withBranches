@@ -112,6 +112,7 @@ const Admin = [
 ];
 import { PropType } from "vue";
 import { Component, Prop, Vue } from "vue-property-decorator";
+import { PluginObject } from "vue/types/umd";
 import admins from "./admins.vue";
 import users from "./Users.vue";
 @Component
@@ -136,8 +137,8 @@ export default class HelloWorld extends Vue {
     default: Array,
   })
   private selectedAdmin!: [];
-  Users = [];
-  Admins = [];
+  Admins: any;
+  Users: any;
   // message = "This is message";
   cancelbtn() {
     this.selectedAdmin = [];
@@ -164,12 +165,12 @@ export default class HelloWorld extends Vue {
       this.clonedselectedperson = this.selectedAdmin;
     }
   }
-  async GetUsers() {
+  async GetUsers(): Promise<Object> {
     return new Promise((resolve) => {
       setTimeout(() => resolve(User), 1500);
     });
   }
-  async GetAdmin() {
+  async GetAdmin(): Promise<Object> {
     return new Promise((resolve) => {
       setTimeout(() => resolve(Admin), 1500);
     });
@@ -179,14 +180,14 @@ export default class HelloWorld extends Vue {
     this.clonedselectedperson = [
       "Please wait... Users and Admins are being Loaded",
     ];
-    this.Users.push(this.GetUsers());
-    this.Admins.concat(this.GetAdmin());
+    this.Users = await this.GetUsers();
+    this.Admins = await this.GetAdmin();
     this.clonedselectedperson = [];
   }
-  selectUser(persons: any): void {
+  selectUser(persons: any) {
     this.selectedUser = persons;
   }
-  selectAdmin(adm: any): void {
+  selectAdmin(adm: any) {
     this.selectedAdmin = adm;
   }
   created() {
