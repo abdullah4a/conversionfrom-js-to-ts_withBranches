@@ -54,7 +54,7 @@ export default class admins extends Vue {
   }
   private computed: object = {
     fullNameAdmin(): string {
-      // return `${this.clonedAdmin.afirstName} ${this.clonedAdmin.alastname}`;
+      return `${this.clonedAdmin.afirstName} ${this.clonedAdmin.alastname}`;
     },
   };
 }
