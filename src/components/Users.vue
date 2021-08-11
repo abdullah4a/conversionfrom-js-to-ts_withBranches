@@ -1,3 +1,4 @@
+/* eslint-disable */
 <template>
   <div id="usercontainer">
     <div class="header">
@@ -63,13 +64,13 @@ export default class users extends Vue {
     this.$emit("save", this.clonedUser);
   }
 
-  // private computed: Object = {
+  // private computed: any{
   //   fullName: {
   //     return `${this.clonedUser.firstName} ${this.clonedUser.lastname}`;
   //   },
   // };
   // @Watch("clonedUser.lastname", { immediate: true })
-  // private watchModel(val: any, oldVal: any) {
+  // private watchModel({ val, oldVal }: { val: any; oldVal: any }) {
   //   if (val) {
   //     console.log(val);
   //   }

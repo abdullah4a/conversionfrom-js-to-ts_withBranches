@@ -1,3 +1,4 @@
+/* eslint-disable */
 <template>
   <div id="usercontainer">
     <div class="header">
@@ -40,6 +41,7 @@ import { PropType } from "vue";
 import { Component, Prop, Vue } from "vue-property-decorator";
 @Component({})
 export default class admins extends Vue {
+<<<<<<< Updated upstream
   @Prop({
     type: Array as PropType<string[]>,
     default: () => [],
@@ -50,6 +52,12 @@ export default class admins extends Vue {
     default: () => [],
   })
   private fullNameAdmin!: string[];
+=======
+  @Prop({})
+  private admin!: any;
+  @Prop({})
+  private fullNameAdmin: any;
+>>>>>>> Stashed changes
   btnSave = "save";
   btnCancel = "cancel";
   message = "This is message";

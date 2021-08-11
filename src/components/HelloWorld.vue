@@ -1,3 +1,4 @@
+/* eslint-disable */
 <template>
   <div class="home">
     <div id="nav">
@@ -122,6 +123,7 @@ import users from "./Users.vue";
   },
 })
 export default class HelloWorld extends Vue {
+<<<<<<< Updated upstream
   @Prop({
     type: Array as PropType<string[]>,
     default: () => [],
@@ -149,50 +151,59 @@ export default class HelloWorld extends Vue {
   private Admins!: any;
   Users: any;
   message: any;
+=======
+  @Prop({})
+  private selectedUser: any;
+  @Prop({})
+  private selectedAdmin: any;
+  @Prop({})
+  private Admins: any;
+  @Prop({})
+  private Users: any;
+  @Prop({})
+  private message: any;
+>>>>>>> Stashed changes
   cancelbtn() {
     this.selectedAdmin = [];
     this.selectedUser = [];
     this.message = "";
   }
   saveBtn() {
-    // if (this.selectedUser) {
-    //   const index = this.Users.findIndex(
-    //     this.Users.id === this.selectedUser.id
-    //   );
-    //   this.Users.splice(index, 1, this.selectedUser);
-    //   this.Users = { ...this.Users };
-    //   this.selectedUser = undefined;
-    // } else {
-    //   const index = this.Admins.findIndex(
-    //     this.Admins.id === this.selectedAdmin.id
-    //   );
-    //   this.Admins.splice(index, 1, this.selectedAdmin);
-    //   this.Admins = { ...this.Admins };
-    //   this.selectAdmin = undefined;
-    // }
     if (this.selectedUser) {
-      this.message = this.selectedUser;
+      const index = this.Users.findIndex(
+        this.Users.id === this.selectedUser.id
+      );
+      this.Users.splice(index, 1, this.selectedUser);
+      this.Users = { ...this.Users };
+      this.selectedUser = undefined;
     } else {
-      this.message = this.selectedAdmin;
+      const index = this.Admins.findIndex(
+        this.Admins.id === this.selectedAdmin.id
+      );
+      this.Admins.splice(index, 1, this.selectedAdmin);
+      this.Admins = { ...this.Admins };
+      this.selectedAdmin = undefined;
     }
   }
-  async GetUsers(): Promise<Array<unknown>> {
+  async GetUsers() {
     return new Promise((resolve) => {
       setTimeout(() => resolve(User), 1500);
     });
   }
-  async GetAdmin(): Promise<Array<unknown>> {
+  async GetAdmin() {
     return new Promise((resolve) => {
       setTimeout(() => resolve(Admin), 1500);
     });
   }
   async LoadUsers() {
     this.Users = [];
+    this.Admins = [];
     this.message = "Please wait... Users and Admins are being Loaded";
-    this.Users = await this.GetUsers();
-    this.Admins = await this.GetAdmin();
+    this.Users = await this.GetUsers() ;
+    this.Admins = await this.GetAdmin() ;
     this.message = "";
   }
+<<<<<<< Updated upstream
   selectUser(persons: Object) {
     this.selectedUser = persons;
   }
@@ -201,6 +212,16 @@ export default class HelloWorld extends Vue {
   }
   private created(): Object {
     return this.LoadUsers();
+=======
+  selectUser(persons: any): any {
+    this.selectedUser = persons;
+  }
+  selectAdmin(adm: any): any {
+    this.selectedAdmin = adm;
+  }
+  created() {
+    this.LoadUsers();
+>>>>>>> Stashed changes
   }
 }
 </script>
