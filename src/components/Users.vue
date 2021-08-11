@@ -43,15 +43,11 @@
 </template>
 
 <script lang="ts">
-import { PropType } from "vue";
 import { Component, Prop, Vue, Watch } from "vue-property-decorator";
 @Component({})
 export default class users extends Vue {
-  @Prop({
-    type: Array as PropType<string[]>,
-    default: () => [],
-  })
-  private user!: string[];
+  @Prop({})
+  private user!: any;
   btnSave = "save";
   btnCancel = "cancel";
   message: any;
@@ -65,15 +61,15 @@ export default class users extends Vue {
   }
 
   // private computed: any{
-  //   fullName: {
+  //   fullName(): string{
   //     return `${this.clonedUser.firstName} ${this.clonedUser.lastname}`;
-  //   },
-  // };
-  // @Watch("clonedUser.lastname", { immediate: true })
-  // private watchModel({ val, oldVal }: { val: any; oldVal: any }) {
-  //   if (val) {
-  //     console.log(val);
   //   }
-  // }
+  // };
+  @Watch("clonedUser.lastname", { immediate: true })
+  private watchModel({ val, oldVal }: { val: any; oldVal: any }): void {
+    if (val) {
+      console.log(val);
+    }
+  }
 }
 </script>

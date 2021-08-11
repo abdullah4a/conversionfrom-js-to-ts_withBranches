@@ -41,23 +41,10 @@ import { PropType } from "vue";
 import { Component, Prop, Vue } from "vue-property-decorator";
 @Component({})
 export default class admins extends Vue {
-<<<<<<< Updated upstream
-  @Prop({
-    type: Array as PropType<string[]>,
-    default: () => [],
-  })
-  private admin!: string[];
-  @Prop({
-    type: Array as PropType<string[]>,
-    default: () => [],
-  })
-  private fullNameAdmin!: string[];
-=======
   @Prop({})
   private admin!: any;
   @Prop({})
   private fullNameAdmin: any;
->>>>>>> Stashed changes
   btnSave = "save";
   btnCancel = "cancel";
   message = "This is message";

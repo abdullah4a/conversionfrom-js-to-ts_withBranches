@@ -111,7 +111,6 @@ const Admin = [
     aage: 24,
   },
 ];
-import { PropType } from "vue";
 import { Component, Prop, Vue } from "vue-property-decorator";
 import admins from "./admins.vue";
 import users from "./Users.vue";
@@ -123,35 +122,6 @@ import users from "./Users.vue";
   },
 })
 export default class HelloWorld extends Vue {
-<<<<<<< Updated upstream
-  @Prop({
-    type: Array as PropType<string[]>,
-    default: () => [],
-  })
-  private clonedselectedadmin!: string[];
-  @Prop({
-    type: Array as PropType<string[]>,
-    default: () => [],
-  })
-  private clonedselectedUser!: string[];
-  @Prop({
-    type: Object,
-    default: Object,
-  })
-  private selectedUser!: Object;
-  @Prop({
-    type: Object,
-    default: Object,
-  })
-  private selectedAdmin!: Object;
-  @Prop({ 
-    type: Array,
-    default: Array,
-  })
-  private Admins!: any;
-  Users: any;
-  message: any;
-=======
   @Prop({})
   private selectedUser: any;
   @Prop({})
@@ -162,7 +132,6 @@ export default class HelloWorld extends Vue {
   private Users: any;
   @Prop({})
   private message: any;
->>>>>>> Stashed changes
   cancelbtn() {
     this.selectedAdmin = [];
     this.selectedUser = [];
@@ -199,20 +168,11 @@ export default class HelloWorld extends Vue {
     this.Users = [];
     this.Admins = [];
     this.message = "Please wait... Users and Admins are being Loaded";
-    this.Users = await this.GetUsers() ;
-    this.Admins = await this.GetAdmin() ;
+    this.Users = await this.GetUsers();
+    this.Admins = await this.GetAdmin();
     this.message = "";
   }
-<<<<<<< Updated upstream
-  selectUser(persons: Object) {
-    this.selectedUser = persons;
-  }
-  selectAdmin(adm: Object) {
-    this.selectedAdmin = adm;
-  }
-  private created(): Object {
-    return this.LoadUsers();
-=======
+
   selectUser(persons: any): any {
     this.selectedUser = persons;
   }
@@ -221,7 +181,6 @@ export default class HelloWorld extends Vue {
   }
   created() {
     this.LoadUsers();
->>>>>>> Stashed changes
   }
 }
 </script>
