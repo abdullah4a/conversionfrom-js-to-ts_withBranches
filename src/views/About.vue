@@ -1,5 +1,12 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
+    <div class="container">
+      <div class="signup"><router-link to="/signup">Register</router-link></div>
+    </div>
   </div>
 </template>
+<style scoped>
+.container {
+  float: right;
+}
+</style>
