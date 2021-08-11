@@ -165,8 +165,8 @@ export default class HelloWorld extends Vue {
     });
   }
   async LoadUsers() {
-    this.Users = [];
-    this.Admins = [];
+    this.Users = undefined;
+    this.Admins = undefined;
     this.message = "Please wait... Users and Admins are being Loaded";
     this.Users = await this.GetUsers();
     this.Admins = await this.GetAdmin();

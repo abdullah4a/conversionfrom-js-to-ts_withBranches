@@ -5,6 +5,14 @@
         <router-link to="/signup">Register</router-link>
       </div>
     </div>
+    <div class="home">
+      <div>
+        <h1>This is about page</h1>
+      </div>
+      <div>
+        <h2>We are the Users</h2>
+      </div>
+    </div>
   </div>
 </template>
 <style scoped>
@@ -13,5 +21,9 @@
 }
 .is-active {
   border-radius: 5px;
+}
+.home {
+  margin: 5%;
+  width: 79%;
 }
 </style>
