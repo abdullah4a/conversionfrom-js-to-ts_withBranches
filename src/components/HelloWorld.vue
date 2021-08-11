@@ -133,8 +133,8 @@ export default class HelloWorld extends Vue {
   @Prop({})
   private message: any;
   cancelbtn() {
-    this.selectedAdmin = [];
-    this.selectedUser = [];
+    this.selectedAdmin = undefined;
+    this.selectedUser = undefined;
     this.message = "";
   }
   saveBtn() {
@@ -230,6 +230,7 @@ label {
   margin: 20px;
 }
 input[type="text"],
+input[type="password"],
 select {
   font-size: 18px;
   width: 95%;
