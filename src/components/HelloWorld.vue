@@ -47,7 +47,7 @@
 </template>
 
 <script lang="ts">
-const User = [
+User = [
   {
     id: 0,
     firstName: "Abdul manan",
@@ -91,7 +91,7 @@ const User = [
     Salary: 40000,
   },
 ];
-const Admin = [
+Admin = [
   {
     aid: 0,
     afirstName: "Abdul manan",
