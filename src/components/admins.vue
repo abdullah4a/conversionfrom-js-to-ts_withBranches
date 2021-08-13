@@ -3,7 +3,7 @@
   <div id="usercontainer">
     <div class="header">
       <h4>Admin</h4>
-      <p>{{ fullNameAdmin | Capt }}</p>
+      <!-- <p>{{ fullNameAdmin | Capt }}</p> -->
     </div>
     <div class="content">
       <div class="field">
@@ -54,10 +54,10 @@ export default class admins extends Vue {
   saveBtn(): void {
     this.$emit("save", this.clonedAdmin);
   }
-  computed: Record<string, any> = {
-    fullNameAdmin(): string {
-      return this.clonedAdmin.afirstName + "" + this.clonedAdmin.alastname;
-    },
-  };
+  // computed:{
+  //   fullNameAdmin(): string {
+  //     return this.clonedAdmin.afirstName + "" + this.clonedAdmin.alastname;
+  //   },
+  // };
 }
 </script>

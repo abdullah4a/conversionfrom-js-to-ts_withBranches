@@ -30,7 +30,7 @@ export default class singup extends Vue {
   password = "";
   confirmPwd = "";
   singup() {
-    alert("Sorry axios isn't wroking.\ncan't Register you yet");
+    alert("Sorry axios isn't wroking.\nCan't Register you yet");
   }
   checkValidity() {
     if (this.confirmPwd) {

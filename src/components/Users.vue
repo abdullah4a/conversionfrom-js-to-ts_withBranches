@@ -60,16 +60,16 @@ export default class users extends Vue {
     this.$emit("save", this.clonedUser);
   }
 
-  // private computed: any{
+  // computed:{
   //   fullName(): string{
   //     return `${this.clonedUser.firstName} ${this.clonedUser.lastname}`;
   //   }
   // };
-  @Watch("clonedUser.lastname", { immediate: true })
-  private watchModel({ val, oldVal }: { val: any; oldVal: any }): void {
-    if (val) {
-      console.log(val);
-    }
-  }
+  // @Watch("clonedUser.lastname", { immediate: true })
+  // private watchModel({ val, oldVal }: { val: any; oldVal: any }): void {
+  //   if (val) {
+  //     console.log(val);
+  //   }
+  // }
 }
 </script>

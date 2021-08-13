@@ -47,7 +47,7 @@
 </template>
 
 <script lang="ts">
-User = [
+let User = [
   {
     id: 0,
     firstName: "Abdul manan",
@@ -91,7 +91,7 @@ User = [
     Salary: 40000,
   },
 ];
-Admin = [
+let Admin = [
   {
     aid: 0,
     afirstName: "Abdul manan",
@@ -112,6 +112,7 @@ Admin = [
   },
 ];
 import { Component, Prop, Vue } from "vue-property-decorator";
+import { VNodeChildrenArrayContents } from "vue/types/umd";
 import admins from "./admins.vue";
 import users from "./Users.vue";
 
@@ -164,19 +165,30 @@ export default class HelloWorld extends Vue {
       setTimeout(() => resolve(Admin), 1500);
     });
   }
-  async LoadUsers() {
-    this.Users = undefined;
-    this.Admins = undefined;
-    this.message = "Please wait... Users and Admins are being Loaded";
-    this.Users = await this.GetUsers();
-    this.Admins = await this.GetAdmin();
+  LoadUsers() {
+    this.getLoadtheUsers();
+    this.getLoadtheAdmins();
+    //   this.Users = undefined;
+    //   this.Admins = undefined;
+    //   this.message = "Please wait... Users and Admins are being Loaded";
+    //   this.Users = await this.GetUsers();
+    //   this.Admins = await this.GetAdmin();
     this.message = "";
   }
-
-  selectUser(persons: any): any {
+  async getLoadtheUsers() {
+    this.Users = undefined;
+    this.message = "Please wait... Users are being Loaded";
+    this.Users = await this.GetUsers();
+  }
+  async getLoadtheAdmins() {
+    this.Admins = undefined;
+    this.message = "Please wait... Admins are being Loaded";
+    this.Admins = await this.GetAdmin();
+  }
+  selectUser(persons: any): void {
     this.selectedUser = persons;
   }
-  selectAdmin(adm: any): any {
+  selectAdmin(adm: any): void {
     this.selectedAdmin = adm;
   }
   created() {
