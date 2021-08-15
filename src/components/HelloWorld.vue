@@ -141,14 +141,14 @@ export default class HelloWorld extends Vue {
   saveBtn() {
     if (this.selectedUser) {
       const index = this.Users.findIndex(
-        this.Users.id === this.selectedUser.id
+        (U: any) => U.id === this.selectedUser.id
       );
       this.Users.splice(index, 1, this.selectedUser);
       this.Users = { ...this.Users };
       this.selectedUser = undefined;
     } else {
       const index = this.Admins.findIndex(
-        this.Admins.id === this.selectedAdmin.id
+        (Admn: any) => Admn.id === this.selectedAdmin.id
       );
       this.Admins.splice(index, 1, this.selectedAdmin);
       this.Admins = { ...this.Admins };
