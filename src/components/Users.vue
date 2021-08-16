@@ -43,28 +43,29 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue, Watch } from "vue-property-decorator";
-@Component({})
+let user!: any;
+let clonedUser = { ...user };
+
+import { Component, Vue, Watch } from "vue-property-decorator";
+@Component({
+  computed: {
+    fullName(): string {
+      return `${clonedUser.firstName} ${clonedUser.lastname}`;
+    },
+  },
+})
 export default class users extends Vue {
-  @Prop({})
-  private user!: any;
   btnSave = "save";
   btnCancel = "cancel";
   message: any;
-  clonedUser = { ...this.user };
   fullName: any;
   cancelbtn() {
     this.$emit("cancel");
   }
   saveBtn(): void {
-    this.$emit("save", this.clonedUser);
+    this.$emit("save", clonedUser);
   }
 
-  // computed:{
-  //   fullName(): string{
-  //     return `${this.clonedUser.firstName} ${this.clonedUser.lastname}`;
-  //   }
-  // };
   // @Watch("clonedUser.lastname", { immediate: true })
   // private watchModel({ val, oldVal }: { val: any; oldVal: any }): void {
   //   if (val) {

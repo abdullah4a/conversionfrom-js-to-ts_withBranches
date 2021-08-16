@@ -112,7 +112,6 @@ let Admin = [
   },
 ];
 import { Component, Prop, Vue } from "vue-property-decorator";
-import { VNodeChildrenArrayContents } from "vue/types/umd";
 import admins from "./admins.vue";
 import users from "./Users.vue";
 
@@ -123,16 +122,11 @@ import users from "./Users.vue";
   },
 })
 export default class HelloWorld extends Vue {
-  @Prop({})
-  private selectedUser: any;
-  @Prop({})
-  private selectedAdmin: any;
-  @Prop({})
-  private Admins: any;
-  @Prop({})
-  private Users: any;
-  @Prop({})
-  private message: any;
+  selectedUser!: any;
+  selectedAdmin!: any;
+  Admins: any;
+  Users: any;
+  message = "";
   cancelbtn() {
     this.selectedAdmin = undefined;
     this.selectedUser = undefined;
@@ -165,26 +159,26 @@ export default class HelloWorld extends Vue {
       setTimeout(() => resolve(Admin), 1500);
     });
   }
-  LoadUsers() {
-    this.getLoadtheUsers();
-    this.getLoadtheAdmins();
-    //   this.Users = undefined;
-    //   this.Admins = undefined;
-    //   this.message = "Please wait... Users and Admins are being Loaded";
-    //   this.Users = await this.GetUsers();
-    //   this.Admins = await this.GetAdmin();
+  async LoadUsers() {
+    // this.getLoadtheUsers();
+    // this.getLoadtheAdmins();
+    this.Users = undefined;
+    this.Admins = undefined;
+    this.message = "Please wait... Users and Admins are being Loaded";
+    this.Users = await this.GetUsers();
+    this.Admins = await this.GetAdmin();
     this.message = "";
   }
-  async getLoadtheUsers() {
-    this.Users = undefined;
-    this.message = "Please wait... Users are being Loaded";
-    this.Users = await this.GetUsers();
-  }
-  async getLoadtheAdmins() {
-    this.Admins = undefined;
-    this.message = "Please wait... Admins are being Loaded";
-    this.Admins = await this.GetAdmin();
-  }
+  // async getLoadtheUsers() {
+  //   this.Users = undefined;
+  //   this.message = "Please wait... Users are being Loaded";
+  //   this.Users = await this.GetUsers();
+  // }
+  // async getLoadtheAdmins() {
+  //   this.Admins = undefined;
+  //   this.message = "Please wait... Admins are being Loaded";
+  //   this.Admins = await this.GetAdmin();
+  // }
   selectUser(persons: any): void {
     this.selectedUser = persons;
   }

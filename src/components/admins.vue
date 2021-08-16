@@ -37,27 +37,25 @@
 </template>
 
 <script lang="ts">
+let admin: any;
+let clonedAdmin = { ...admin };
 import { Component, Prop, Vue } from "vue-property-decorator";
-@Component({})
+@Component({
+  computed: {
+    fullNameAdmin(): string {
+      return `${clonedAdmin.afirstName}${clonedAdmin.alastname}`;
+    },
+  },
+})
 export default class admins extends Vue {
-  @Prop({})
-  private admin!: any;
-  @Prop({})
-  private fullNameAdmin: any;
   btnSave = "save";
   btnCancel = "cancel";
   message = "This is message";
-  clonedAdmin = { ...this.admin };
   cancelbtn(): void {
     this.$emit("cancel");
   }
   saveBtn(): void {
-    this.$emit("save", this.clonedAdmin);
+    this.$emit("save", clonedAdmin);
   }
-  // computed:{
-  //   fullNameAdmin(): string {
-  //     return this.clonedAdmin.afirstName + "" + this.clonedAdmin.alastname;
-  //   },
-  // };
 }
 </script>
