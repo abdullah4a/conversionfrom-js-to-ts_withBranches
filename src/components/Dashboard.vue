@@ -122,14 +122,14 @@ import users from "./Users.vue";
   },
 })
 export default class HelloWorld extends Vue {
-  selectedUser!: any;
+  selectedUser :any;
   selectedAdmin!: any;
   Admins: any;
   Users: any;
   message = "";
   cancelbtn() {
     this.selectedAdmin = undefined;
-    this.selectedUser = undefined;
+    this.selectedUser = null;
     this.message = "";
   }
   saveBtn() {

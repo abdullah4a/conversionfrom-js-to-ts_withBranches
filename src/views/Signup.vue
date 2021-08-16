@@ -19,6 +19,7 @@
       />
     </div>
     <div>
+      <button class="btn" @click="cancel">Cancel</button>
       <button class="btn" @click="singup">Sign up</button>
     </div>
   </div>
@@ -31,6 +32,10 @@ export default class singup extends Vue {
   confirmPwd = "";
   singup() {
     alert("Sorry axios isn't wroking.\nCan't Register you yet");
+    this.$router.push({ name: "About" });
+  }
+  cancel() {
+    this.$router.push({ name: "About" });
   }
   checkValidity() {
     if (this.confirmPwd) {
@@ -45,5 +50,8 @@ export default class singup extends Vue {
 .content {
   margin: 0% 28%;
   width: 60%;
+}
+.btn {
+  margin: 10px;
 }
 </style>
