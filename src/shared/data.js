@@ -1,5 +1,5 @@
 import * as axios from "axios";
-import { API_Config } from "./config";
+import { API_Config } from "./CONFIG";
 // Configures Users
 const getUser = async function() {
         try {
@@ -35,7 +35,7 @@ const parselist = response => {
     return list;
 };
 // 
-export const data = {
+export const Data = {
     getUser,
     getAdmin
 };

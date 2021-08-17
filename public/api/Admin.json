@@ -1,0 +1,19 @@
+[{
+        "aid": 0,
+        "afirstName": "Abdul manan",
+        "alastname": "Ali",
+        "aage": 22
+    },
+    {
+        "aid": 1,
+        "afirstName": "Abdullah",
+        "alastname": "Iqbal",
+        "aage": 23
+    },
+    {
+        "aid": 3,
+        "afirstName": "Asadullah",
+        "alastname": "Shahid",
+        "aage": 24
+    }
+]

@@ -1,0 +1,37 @@
+[{
+    "id": 0,
+    "firstName": "Abdul manan",
+    "lastname": "Ali",
+    "age": 22,
+    "Salary": 10000
+}, {
+    "id": 1,
+    "firstName": "Ahmad",
+    "lastname": "Raza",
+    "age": 21,
+    "Salary": 12000
+}, {
+    "id": 2,
+    "firstName": "Ali",
+    "lastname": "Raza",
+    "age": 23,
+    "Salary": 25000
+}, {
+    "id": 3,
+    "firstName": "Raza",
+    "lastname": "Mowana",
+    "age": 24,
+    "Salary": 100000
+}, {
+    "id": 4,
+    "firstName": "Shabbar",
+    "lastname": "Raza",
+    "age": 25,
+    "Salary": 35000
+}, {
+    "id": 5,
+    "firstName": "Asad ",
+    "lastname": "Shafique",
+    "age": 26,
+    "Salary": 40000
+}]

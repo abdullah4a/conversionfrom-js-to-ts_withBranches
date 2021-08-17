@@ -1,1 +1,1 @@
-import * from "./data";
+export * from "./data";

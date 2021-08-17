@@ -47,86 +47,20 @@
 </template>
 
 <script lang="ts">
-let User = [
-  {
-    id: 0,
-    firstName: "Abdul manan",
-    lastname: "Ali",
-    age: 22,
-    Salary: 0,
-  },
-  {
-    id: 1,
-    firstName: "Ahmad",
-    lastname: "Raza",
-    age: 21,
-    Salary: 12000,
-  },
-  {
-    id: 2,
-    firstName: "Ali",
-    lastname: "Raza",
-    age: 23,
-    Salary: 25000,
-  },
-  {
-    id: 3,
-    firstName: "Raza",
-    lastname: "Mowana",
-    age: 24,
-    Salary: 100000,
-  },
-  {
-    id: 4,
-    firstName: "Shabbar",
-    lastname: "Raza",
-    age: 25,
-    Salary: 35000,
-  },
-  {
-    id: 5,
-    firstName: "Asad ",
-    lastname: "Shafique",
-    age: 26,
-    Salary: 40000,
-  },
-];
-let Admin = [
-  {
-    aid: 0,
-    afirstName: "Abdul manan",
-    alastname: "Ali",
-    aage: 22,
-  },
-  {
-    aid: 1,
-    afirstName: "Abdullah",
-    alastname: "Iqbal",
-    aage: 23,
-  },
-  {
-    aid: 3,
-    afirstName: "Abdullah",
-    alastname: "Shahid",
-    aage: 24,
-  },
-];
 import { Component, Prop, Vue } from "vue-property-decorator";
 import admins from "./admins.vue";
 import users from "./Users.vue";
-const Variables = Vue.extend({
-  props: {
-    selectedUser: {},
-    selectedAdmin: {},
-  },
-});
+import { Data } from "../shared";
+
 @Component({
   components: {
     admins,
     users,
   },
 })
-export default class HelloWorld extends Variables {
+export default class HelloWorld extends Vue {
+  selectedAdmin: any;
+  selectedUser: any;
   Admins: any;
   Users: any;
   message = "";
@@ -152,36 +86,14 @@ export default class HelloWorld extends Variables {
       this.selectedAdmin = undefined;
     }
   }
-  async GetUsers() {
-    return new Promise((resolve) => {
-      setTimeout(() => resolve(User), 1500);
-    });
-  }
-  async GetAdmin() {
-    return new Promise((resolve) => {
-      setTimeout(() => resolve(Admin), 1500);
-    });
-  }
   async LoadUsers() {
-    // this.getLoadtheUsers();
-    // this.getLoadtheAdmins();
     this.Users = undefined;
     this.Admins = undefined;
     this.message = "Please wait... Users and Admins are being Loaded";
-    this.Users = await this.GetUsers();
-    this.Admins = await this.GetAdmin();
+    this.Users = await Data.getUser();
+    this.Admins = await Data.getAdmin();
     this.message = "";
   }
-  // async getLoadtheUsers() {
-  //   this.Users = undefined;
-  //   this.message = "Please wait... Users are being Loaded";
-  //   this.Users = await this.GetUsers();
-  // }
-  // async getLoadtheAdmins() {
-  //   this.Admins = undefined;
-  //   this.message = "Please wait... Admins are being Loaded";
-  //   this.Admins = await this.GetAdmin();
-  // }
   selectUser(persons: any): void {
     this.selectedUser = persons;
   }
