@@ -114,22 +114,25 @@ let Admin = [
 import { Component, Prop, Vue } from "vue-property-decorator";
 import admins from "./admins.vue";
 import users from "./Users.vue";
-
+const Variables = Vue.extend({
+  props: {
+    selectedUser: {},
+    selectedAdmin: {},
+  },
+});
 @Component({
   components: {
     admins,
     users,
   },
 })
-export default class HelloWorld extends Vue {
-  selectedUser :any;
-  selectedAdmin!: any;
+export default class HelloWorld extends Variables {
   Admins: any;
   Users: any;
   message = "";
   cancelbtn() {
     this.selectedAdmin = undefined;
-    this.selectedUser = null;
+    this.selectedUser = undefined;
     this.message = "";
   }
   saveBtn() {

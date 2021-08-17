@@ -1,0 +1,1 @@
+export const API_Config = process.env.VUE_APP_API;

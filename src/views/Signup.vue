@@ -32,7 +32,7 @@ export default class singup extends Vue {
   confirmPwd = "";
   singup() {
     alert("Sorry axios isn't wroking.\nCan't Register you yet");
-    this.$router.push({ name: "About" });
+    this.$router.push({ path: "/about" });
   }
   cancel() {
     this.$router.push({ name: "About" });
