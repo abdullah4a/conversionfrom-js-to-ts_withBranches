@@ -34,8 +34,15 @@ const parselist = response => {
     };
     return list;
 };
-// 
+//Updation will go here..
+const Update = function() {
+        console.log("will provide Updation")
+    }
+    //Deletion will go here
+
+//
 export const Data = {
     getUser,
-    getAdmin
+    getAdmin,
+    Update
 };

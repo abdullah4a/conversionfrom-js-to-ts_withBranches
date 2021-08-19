@@ -51,7 +51,13 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 import admins from "./admins.vue";
 import users from "./Users.vue";
 import { Data } from "../shared";
-
+interface ForUser {
+  id: number;
+  firstName: string;
+  lastname: string;
+  age: number;
+  salary?: number;
+}
 @Component({
   components: {
     admins,
@@ -65,7 +71,7 @@ export default class HelloWorld extends Vue {
   Users: any;
   message = "";
   cancelbtn() {
-    this.selectedAdmin = undefined;
+    this.selectedAdmin = {};
     this.selectedUser = undefined;
     this.message = "";
   }
@@ -93,12 +99,13 @@ export default class HelloWorld extends Vue {
     this.Users = await Data.getUser();
     this.Admins = await Data.getAdmin();
     this.message = "";
+    Data.Update();
   }
-  selectUser(persons: any): void {
-    this.selectedUser = persons;
-  }
-  selectAdmin(adm: any): void {
+  selectAdmin(adm: any) {
     this.selectedAdmin = adm;
+  }
+  selectUser(persons: any) {
+    this.selectedUser = persons;
   }
   created() {
     this.LoadUsers();
