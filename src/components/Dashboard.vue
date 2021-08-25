@@ -51,7 +51,7 @@
 import { Component, Prop, Vue } from "vue-property-decorator";
 import admins from "./admins.vue";
 import users from "./Users.vue";
-import { Data } from "../shared/index.js";
+import { Data } from "../shared/index";
 @Component({
   components: {
     admins,
@@ -59,114 +59,48 @@ import { Data } from "../shared/index.js";
   },
 })
 export default class HelloWorld extends Vue {
-  private selectedAdmin = {
-    id: 0,
-    firstName: "",
-    lastname: "",
-    age: 0,
-  };
+  private selectedAdmin: (string | number | undefined)[] = [];
   // private act: any;
-  private selectedUser = {
-    id: 0,
-    firstName: "",
-    lastname: "",
-    age: 0,
-    salary: 0,
-  };
-  private Admins = {
-    id: 0,
-    firstName: "",
-    lastname: "",
-    age: 0,
-  };
-  Users = {
-    id: 0,
-    firstName: "",
-    lastname: "",
-    age: 0,
-    salary: 0,
-  };
+  private selectedUser: (string | number | undefined)[] = [];
+  private Admins: any[] = [];
+  private Users: any[] = [];
   message = "";
   cancelbtn() {
-    this.selectedAdmin = {
-      id: 0,
-      firstName: "",
-      lastname: "",
-      age: 0,
-    };
-    this.selectedUser = {
-      id: 0,
-      firstName: "",
-      lastname: "",
-      age: 0,
-      salary: 0,
-    };
+    this.selectedAdmin = [undefined];
+    this.selectedUser = [undefined];
     this.message = "";
   }
   saveBtn() {
-    // if (this.selectedUser) {
-    //   const index = this.Users.findIndex(
-    //     (U: any) => U.id === this.selectedUser.id
-    //   );
-    //   this.Users.splice(index, 1, this.selectedUser);
-    //   this.Users = { ...this.Users };
-    //   this.selectedUser = {
-    //     id: 0,
-    //     firstName: "",
-    //     lastname: "",
-    //     age: 0,
-    //     salary: 0,
-    //   };
-    // } else {
-    //   const index = this.Admins.findIndex(
-    //     (Admn: any) => Admn.id === this.selectedAdmin.id
-    //   );
-    //   this.Admins.splice(index, 1, this.selectedAdmin);
-    //   this.Admins = { ...this.Admins };
-    //   this.selectedAdmin = {
-    //     id: 0,
-    //     firstName: "",
-    //     lastname: "",
-    //     age: 0,
-    //   };
-    // }
+    if (this.selectedUser) {
+      const index = this.Users.findIndex(
+        (U: any) => U.id === this.selectedUser.id
+      );
+      this.Users.splice(index, 1, this.selectedUser);
+      this.Users = { ...this.Users };
+      this.selectedUser = [undefined];
+    } else {
+      const index = this.Admins.findIndex(
+        (Admn: any) => Admn.id === this.selectedAdmin.id
+      );
+      this.Admins.splice(index, 1, this.selectedAdmin);
+      this.Admins = { ...this.Admins };
+      this.selectedAdmin = [undefined];
+    }
     Data.Update();
   }
   async LoadUsers() {
-    this.Users = {
-      id: 0,
-      firstName: "",
-      lastname: "",
-      age: 0,
-      salary: 0,
-    };
-    this.Admins = {
-      id: 0,
-      firstName: "",
-      lastname: "",
-      age: 0,
-    };
+    this.Users = [];
+    this.Admins = [];
     this.message = "Please wait... Users and Admins are being Loaded";
     this.Users = await Data.getUser();
     this.Admins = await Data.getAdmin();
     this.message = "";
     Data.Update();
   }
-  selectAdmin(adm: {
-    id: number;
-    firstName: string;
-    lastname: string;
-    age: number;
-  }) {
+  selectAdmin(adm: any) {
     this.selectedAdmin = adm;
   }
-  selectUser(persons: {
-    id: number;
-    firstName: string;
-    lastname: string;
-    age: number;
-    salary: number;
-  }) {
+  selectUser(persons: any) {
     this.selectedUser = persons;
   }
   created() {

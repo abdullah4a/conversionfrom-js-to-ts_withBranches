@@ -47,12 +47,7 @@ import { Component, Prop, Vue } from "vue-property-decorator";
   // },
 })
 export default class admins extends Vue {
-  private admin = {
-    id: 0,
-    firstName: "",
-    lastname: "",
-    age: 0,
-  };
+  private admin: any[] = [];
   private clonedAdmin = { ...this.admin };
   btnSave = "save";
   btnCancel = "cancel";

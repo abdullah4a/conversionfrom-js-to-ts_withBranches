@@ -47,23 +47,17 @@ import { Component, Vue, Watch } from "vue-property-decorator";
 @Component({
   // computed: {
   //   fullName(): string {
-  //     return `${clonedUser.firstName} ${clonedUser.lastname}`;
+  //     return `${this.clonedUser.firstName} ${this.clonedUser.lastname}`;
   //   },
   // },
 })
 export default class users extends Vue {
-  private user = {
-    id: 0,
-    firstName: "",
-    lastname: "",
-    age: 0,
-    salary: 0,
-  };
+  private user: any[] = [];
   private clonedUser = { ...this.user };
   btnSave = "save";
   btnCancel = "cancel";
-  message: any;
-  fullName: any;
+  message: string = "";
+  fullName: string = "";
   cancelbtn() {
     this.$emit("cancel");
   }
@@ -71,11 +65,11 @@ export default class users extends Vue {
     this.$emit("save", this.clonedUser);
   }
 
-  @Watch("clonedUser.lastname", { immediate: true })
-  private watchModel({ val, oldVal }: { val: any; oldVal: any }): void {
-    if (val) {
-      console.log(val);
-    }
-  }
+  // @Watch("clonedUser.lastname", { immediate: true })
+  // private watchModel({ val, oldVal }: { val: any; oldVal: any }): void {
+  //   if (val) {
+  //     console.log(val);
+  //   }
+  // }
 }
 </script>
