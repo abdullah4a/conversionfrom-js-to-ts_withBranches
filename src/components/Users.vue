@@ -43,7 +43,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Watch } from "vue-property-decorator";
+import { Component, Vue } from "vue-property-decorator";
 @Component({
   // computed: {
   //   fullName(): string {
@@ -52,12 +52,12 @@ import { Component, Vue, Watch } from "vue-property-decorator";
   // },
 })
 export default class users extends Vue {
-  private user: any[] = [];
+  private user: (string | number | undefined)[] = [];
   private clonedUser = { ...this.user };
   btnSave = "save";
   btnCancel = "cancel";
-  message: string = "";
-  fullName: string = "";
+  private message = "";
+  // private fullName = "";
   cancelbtn() {
     this.$emit("cancel");
   }

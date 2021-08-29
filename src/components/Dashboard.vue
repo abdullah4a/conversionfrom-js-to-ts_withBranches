@@ -59,7 +59,8 @@ import { Data } from "../shared/index";
   },
 })
 export default class HelloWorld extends Vue {
-  private selectedAdmin: (string | number | undefined)[] = [];
+  // type ObjInAct=number|string|undefined;
+  private selectedAdmin: (string | number | undefined)[] = []; //ObjInAct[] = [];
   // private act: any;
   private selectedUser: (string | number | undefined)[] = [];
   private Admins: any[] = [];
@@ -70,19 +71,15 @@ export default class HelloWorld extends Vue {
     this.selectedUser = [undefined];
     this.message = "";
   }
-  saveBtn() {
-    if (this.selectedUser) {
-      const index = this.Users.findIndex(
-        (U: any) => U.id === this.selectedUser.id
-      );
-      this.Users.splice(index, 1, this.selectedUser);
+  saveBtn(user: any) {
+    if (user) {
+      const index = this.Users.findIndex((U: any) => U.id === user.id);
+      this.Users.splice(index, 1, user);
       this.Users = { ...this.Users };
       this.selectedUser = [undefined];
     } else {
-      const index = this.Admins.findIndex(
-        (Admn: any) => Admn.id === this.selectedAdmin.id
-      );
-      this.Admins.splice(index, 1, this.selectedAdmin);
+      const index = this.Admins.findIndex((Admn: any) => Admn.id === user.id);
+      this.Admins.splice(index, 1, user);
       this.Admins = { ...this.Admins };
       this.selectedAdmin = [undefined];
     }
@@ -98,10 +95,10 @@ export default class HelloWorld extends Vue {
     Data.Update();
   }
   selectAdmin(adm: any) {
-    this.selectedAdmin = adm;
+    this.selectedAdmin.push(adm);
   }
   selectUser(persons: any) {
-    this.selectedUser = persons;
+    this.selectedUser.push(persons);
   }
   created() {
     this.LoadUsers();
